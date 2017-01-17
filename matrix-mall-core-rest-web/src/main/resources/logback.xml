@@ -1,0 +1,69 @@
+<configuration scan="true" scanPeriod="1 minutes">
+
+  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>[%X{key}]%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", UTC} %-5level %logger{35} - %msg %n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="spring" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${catalina.home:-.}/logs/mtx-core/spring.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${catalina.home:-.}/logs/archive/mtx-core/spring.%d{yyyy-MM-dd}.old.log</fileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>[%X{key}]%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", UTC} %-5level %logger{35} - %msg %n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="all" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${catalina.home:-.}/logs/mtx-core/all.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${catalina.home:-.}/logs/archive/mtx-core/all.%d{yyyy-MM-dd}.old.log</fileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>[%X{key}]%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", UTC} %-5level %logger{35} - %msg %n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="app" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${catalina.home:-.}/logs/mtx-core/app.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${catalina.home:-.}/logs/archive/mtx-core/app.%d{yyyy-MM-dd}.old.log</fileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>[%X{key}]%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", UTC} %-5level %logger{35} - %msg %n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="hibernate" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${catalina.home:-.}/logs/mtx-core/hibernate.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${catalina.home:-.}/logs/archive/mtx-core/hibernate.%d{yyyy-MM-dd}.old.log</fileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>[%X{key}]%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", UTC} %-5level %logger{35} - %msg %n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="org.springframework" level="error" additivity="false">
+    <appender-ref ref="spring" />
+  </logger>
+
+  <logger name="com.gdn" level="info" additivity="false">
+    <appender-ref ref="app" />
+  </logger>
+  
+  <logger name="org.apache.tomcat.jdbc" level="error" additivity="false">
+    <appender-ref ref="stdout" />
+  </logger>
+
+  <logger name="org.hibernate" level="error" additivity="false">
+    <appender-ref ref="hibernate" />
+  </logger>
+
+  <root level="error">
+    <appender-ref ref="stdout" />
+    <appender-ref ref="all" />
+  </root>
+</configuration>

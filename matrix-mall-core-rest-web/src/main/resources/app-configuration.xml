@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+  <context:property-placeholder location="file:///${MTX_CONF_DIR}/mtx-core-config/jpa.properties"/>
+  <context:annotation-config />
+  <import resource="classpath:jpa-configuration.xml" />
+  <context:component-scan base-package="com.matrixmall.core.service" />
+  <bean id="basicPasswordEncryptor" class="org.jasypt.util.password.BasicPasswordEncryptor" />
+  <!-- 
+  <bean id="saltGenerator" class="org.jasypt.salt.FixedStringSaltGenerator">
+	<property name="salt">
+	  <value>${jasypt.config.salt}</value>
+   </property>
+  </bean>
+   
+  <bean id="digesterConfig" class="org.jasypt.digest.config.SimpleDigesterConfig">
+	<property name="algorithm">
+	  <value>${jasypt.config.algorithm}</value>
+	</property>
+	<property name="iterations">
+	  <value>${jasypt.config.iterations}</value>
+	</property>
+	<property name="saltGenerator">
+	  <ref bean="saltGenerator" />
+	</property>
+	<property name="saltSizeBytes">
+      <value>${jasypt.config.saltSizeBytes}</value>
+	</property>
+  </bean>
+  <bean id="jasyptDigester" class="org.jasypt.digest.StandardStringDigester">
+    <property name="config">
+	  <ref bean="digesterConfig" />
+	</property>
+  </bean>
+  <bean id="passwordDigester" class="com.gdn.demo.matrixmall.service.util.PasswordDigester">
+    <property name="digester">
+	  <ref bean="jasyptDigester"/>
+	</property>
+  </bean>
+  -->
+</beans>
