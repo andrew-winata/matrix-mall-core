@@ -54,7 +54,7 @@ public class UserServiceBean implements UserService {
     toBeSavedUser.setEmail(user.getEmail().toLowerCase());
     toBeSavedUser.setCreatedDate(new Date());
     toBeSavedUser.setPassword(passwordEncryptor.encryptPassword(user.getPassword()));
-    return userDao.save(user);
+    return userDao.save(toBeSavedUser);
   }
 
   @Transactional(readOnly = false, rollbackFor = Exception.class)

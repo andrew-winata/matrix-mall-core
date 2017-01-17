@@ -10,6 +10,7 @@ public class UpdateUserRequest implements Serializable {
   private String id;
   private String name;
   private String email;
+  private String password;
   private String updatedBy;
 
   public String getId() {
@@ -43,4 +44,14 @@ public class UpdateUserRequest implements Serializable {
   public void setUpdatedBy(String updatedBy) {
     this.updatedBy = updatedBy;
   }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+  
+  
 }
