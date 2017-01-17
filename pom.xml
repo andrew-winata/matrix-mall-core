@@ -16,6 +16,7 @@
     <module>matrix-mall-core-service</module>
     <module>matrix-mall-core-rest-web</module>
     <module>matrix-mall-core-rest-web-model</module>
+	<module>matrix-mall-core-java-client</module>
   </modules>
   <profiles>
     <profile>
@@ -362,6 +363,11 @@
 	  <dependency>
         <groupId>com.matrixmall</groupId>
         <artifactId>matrix-mall-core-rest-web-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+	  <dependency>
+        <groupId>com.matrixmall</groupId>
+        <artifactId>matrix-mall-core-java-client</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
